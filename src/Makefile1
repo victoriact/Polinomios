@@ -1,0 +1,9 @@
+CFLAGS = -I../include -L../lib
+
+../bin/pol: pol.o ../lib/libpol.a
+	cc pol.o -I../include -L../lib -lpol -o ../bin/pol
+
+../lib/libpol.a: pol_es.o pol_arit.o
+	ar rs ../lib/libpol.a pol_es.o pol_arit.o
+
+pol.a pol_es.o pol_arit.o: ../include/pol.h
